@@ -1,0 +1,24 @@
+{
+  "name": "inexdigital/php-centrifugo",
+  "description": "Composite dispatcher for sending messages to Centrifugo with support for multiple transports",
+  "type": "library",
+  "license": "proprietary",
+  "require": {
+    "ext-grpc": "*",
+    "php": "^8.1",
+    "psr/log": "^1.1 || ^2.0 || ^3.0",
+    "centrifugal/phpcent": "3.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Inexdigital\\Centrifugo\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "ilya.stepanov@inex-digital.com"
+    }
+  ]
+}
