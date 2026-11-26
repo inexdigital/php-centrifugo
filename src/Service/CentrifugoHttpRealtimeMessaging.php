@@ -10,7 +10,7 @@ use Inexdigital\Centrifugo\VersionedRealtimeMessagingInterface;
 use phpcent\Client;
 use Psr\Log\LoggerInterface;
 
-class CentrifugoHttpRealtimeMessaging implements VersionedRealtimeMessagingInterface
+final class CentrifugoHttpRealtimeMessaging implements VersionedRealtimeMessagingInterface
 {
     public function __construct(
         private readonly Client $client,
@@ -20,7 +20,12 @@ class CentrifugoHttpRealtimeMessaging implements VersionedRealtimeMessagingInter
 
     public function publish(RealtimeMessageInterface $message): void
     {
-        $this->publishRaw($message->getChannel(), $message->getData());
+        $channels = $message->getChannels();
+        $data = $message->getData();
+
+        foreach ($channels as $channel) {
+            $this->publishRaw($channel, $data);
+        }
     }
 
     private function publishRaw(string $channel, array $data): void

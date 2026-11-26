@@ -6,6 +6,9 @@ namespace Inexdigital\Centrifugo;
 
 interface RealtimeMessageInterface
 {
-    public function getChannel(): string;
+    /**
+     * @return string[]
+     */
+    public function getChannels(): array;
     public function getData(): array;
 }
