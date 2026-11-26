@@ -32,12 +32,10 @@ final class CentrifugoGrpcRealtimeMessaging implements VersionedRealtimeMessagin
         $channels = $message->getChannels();
         $data = $message->getData();
 
-        $failure = null;
         foreach ($channels as $channel) {
             try {
                 $this->publishToChannel($channel, $data);
             } catch (RealtimeMessagingException $e) {
-                $failure ??= $e;
                 $this->logger?->error(
                     'Realtime publish failed',
                     [
@@ -47,10 +45,6 @@ final class CentrifugoGrpcRealtimeMessaging implements VersionedRealtimeMessagin
                     ]
                 );
             }
-        }
-
-        if ($failure !== null) {
-            throw $failure;
         }
     }
 
