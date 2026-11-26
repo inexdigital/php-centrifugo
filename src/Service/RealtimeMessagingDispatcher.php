@@ -12,7 +12,7 @@ use Throwable;
 
 final class RealtimeMessagingDispatcher implements RealtimeMessagingDispatcherInterface
 {
-    /** @param RealtimeMessageInterface[] $transports */
+    /** @param RealtimeMessagingInterface[] $transports */
     private array $transports = [];
 
     public function __construct(
@@ -27,6 +27,7 @@ final class RealtimeMessagingDispatcher implements RealtimeMessagingDispatcherIn
 
     public function publish(RealtimeMessageInterface $message): void
     {
+        /** @var RealtimeMessagingInterface $transport */
         foreach ($this->transports as $transport) {
             try {
                 $transport->publish($message);

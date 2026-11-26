@@ -8,15 +8,21 @@ use Inexdigital\Centrifugo\RealtimeMessageInterface;
 
 class RealtimeMessage implements RealtimeMessageInterface
 {
+    /**
+     * @param string[] $channels
+     */
     public function __construct(
-        private readonly string $channel,
+        private readonly array $channels,
         private readonly array $data
     ) {
     }
 
-    public function getChannel(): string
+    /**
+     * @return string[]
+     */
+    public function getChannels(): array
     {
-        return $this->channel;
+        return $this->channels;
     }
 
     public function getData(): array
