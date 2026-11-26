@@ -19,8 +19,8 @@ final class CentrifugoGrpcRealtimeMessaging implements VersionedRealtimeMessagin
 {
     public function __construct(
         private readonly CentrifugoApiClient $client,
-        private readonly ?LoggerInterface $logger = null,
-        private readonly int $timeoutMicroseconds = 2000000
+        private readonly int $timeoutMicroseconds = 2000000,
+        private readonly ?LoggerInterface $logger = null
     ) {
     }
 
